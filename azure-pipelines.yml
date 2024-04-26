@@ -16,7 +16,7 @@ stages:
       # demands:
       # - npm
       demands:
-        - agent.name -equals 'Hosted Agent'
+        - agent.name -equals Hosted Agent
 
     variables:
       wwwrootDir: 'Tailspin.SpaceGame.Web/wwwroot'
