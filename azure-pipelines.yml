@@ -2,8 +2,9 @@ trigger:
 - '*'
 
 variables:
-  buildConfiguration: 'Release'
-  dotnetSdkVersion: '6.x'
+  - group: 'Release'
+    # buildConfiguration: 'Release'
+    # dotnetSdkVersion: '6.x'
 
 stages:
 - stage: 'Build'
@@ -23,13 +24,18 @@ stages:
     #   dotnetSdkVersion: '6.x'
     
     
-    variables:
-    - group: 'Release'
+    # variables:
+    # - group: 'Release'
 
     steps:
+    
+    - script: 'echo $(sp_subscription)'
+      displayName: 'test echo'
+
     - task: AzureCLI@1
+      displayName: 'test azure cli'
       inputs:
-        azureSubscription: '$(sp_subscription)'
+        azureSubscription: 'Az login Test Connection'
         scriptLocation: 'inlineScript' # | 'scriptPath'. Required. Script Location. Default: scriptPath.
         # scriptPath: # string. Required when scriptLocation = scriptPath. Script Path. 
         inlineScript: 'az login --service-principal -u $(sp_id) -p $(sp_secret) --tenant $(sp_tenant)'
