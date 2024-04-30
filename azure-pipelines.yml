@@ -24,7 +24,7 @@ stages:
     
     
     variables:
-    - group: Release
+    - group: 'Release'
 
     steps:
     - task: AzureCLI@1
